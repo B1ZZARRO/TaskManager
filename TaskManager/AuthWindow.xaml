@@ -1,0 +1,41 @@
+<Window x:Class="TaskManager.AuthWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:local="clr-namespace:TaskManager"
+        mc:Ignorable="d"
+        Title="AuthWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="140"/>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="250"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        
+        <TextBox Grid.Row="1" Grid.Column="1" Margin=" 10 0 10  0" Name="tb_login"></TextBox>
+        
+        <PasswordBox Grid.Row="3" Grid.Column="1" Margin=" 10 0 10  0" Name="tb_password" ></PasswordBox>
+        
+        <CheckBox Grid.Row="5" Grid.Column="1" Margin=" 10 0 10  0" Name="cb_remember" Content="Запомнить меня" HorizontalAlignment="Center"/>
+        
+        <Button Grid.Row="7" Grid.Column="1" Margin="50 0 50 0" Content="Войти" Name="btn_auth" Click="Btn_auth_OnClick"/>
+        
+        <Label Grid.Row="11" Grid.Column="1" Name="lbl_error" Foreground="Red" HorizontalAlignment="Center"/>
+    </Grid>
+</Window>

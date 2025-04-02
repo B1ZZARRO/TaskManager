@@ -1,0 +1,74 @@
+<Window x:Class="TaskManager.AdminWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:local="clr-namespace:TaskManager"
+        mc:Ignorable="d"
+        Title="AdminWindow" Height="450" Width="800" Closed="AdminWindow_OnClosed">
+    <Grid>
+        <TabControl>
+            <TabItem Name="Users">
+                <TabItem.Header>
+                    <TextBlock>Сотрудники</TextBlock>
+                </TabItem.Header>
+                <TabItem.Content>
+                    <DataGrid x:Name="UsersDataGrid" AutoGenerateColumns="False" CanUserAddRows="False"></DataGrid>
+                </TabItem.Content>
+            </TabItem>
+            <TabItem Name="Tasks">
+                <TabItem.Header>
+                    <TextBlock>Задачи</TextBlock>
+                </TabItem.Header>
+                <TabItem.Content>
+                    <DataGrid x:Name="TasksDataGrid" AutoGenerateColumns="False"></DataGrid>
+                </TabItem.Content>
+            </TabItem>
+            <TabItem Name="Settings">
+                <TabItem.Header>
+                    <TextBlock>Настройки</TextBlock>
+                </TabItem.Header>
+                <TabItem.Content>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="20"/>
+                            <RowDefinition Height="150"/>
+                            <RowDefinition Height="10"/>
+                            <RowDefinition Height="20"/>
+                            <RowDefinition Height="10"/>
+                            <RowDefinition Height="20"/>
+                            <RowDefinition Height="10"/>
+                            <RowDefinition Height="20"/>
+                            <RowDefinition Height="20"/>
+                            <RowDefinition Height="20"/>
+                            <RowDefinition Height="20"/>
+                            <RowDefinition />
+                        </Grid.RowDefinitions>  
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="20"/>
+                            <ColumnDefinition Width="150"/>
+                            <ColumnDefinition Width="20"/>
+                            <ColumnDefinition Width="150"/>
+                            <ColumnDefinition Width="20"/>
+                            <ColumnDefinition Width="150"/>
+                            <ColumnDefinition Width="20"/>
+                            <ColumnDefinition Width="150"/>
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        
+                        <ListBox Grid.Row="1" Grid.Column="1" Name="lb_roles"></ListBox>
+                        <Button Grid.Row="3" Grid.Column="1" Content="Добавить" Name="role_add"/>
+                        <Button Grid.Row="5" Grid.Column="1" Content="Изменить" Name="role_cng"/>
+                        <Button Grid.Row="7" Grid.Column="1" Content="Удалить" Name="role_del"/>
+                        
+                        <ListBox Grid.Row="1" Grid.Column="3" Name="lb_group"></ListBox>
+                        <Button Grid.Row="3" Grid.Column="3" Content="Добавить" Name="group_add"/>
+                        <Button Grid.Row="5" Grid.Column="3" Content="Изменить" Name="group_cng"/>
+                        <Button Grid.Row="7" Grid.Column="3" Content="Удалить" Name="group_del"/>
+                        
+                    </Grid>
+                </TabItem.Content>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>
