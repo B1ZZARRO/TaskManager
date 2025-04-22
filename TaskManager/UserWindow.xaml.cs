@@ -17,7 +17,7 @@ public partial class UserWindow : Window
     {
         InitializeComponent();
         
-        var response = apiClientUser.Get<UserTasksModel>(new RestRequest($"/tasks/user/{sId}"));
+        var response = apiClientUser.Get<UserTasksModel>(new RestRequest($"/Task/tasks/user/{sId}"));
         List<UserTasksBodyModel> userTasksList = new List<UserTasksBodyModel>();
         for (int i = 0; i < response.Body.Count; i++)
         {

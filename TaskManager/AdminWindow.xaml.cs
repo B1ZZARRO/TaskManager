@@ -30,7 +30,7 @@ public partial class AdminWindow : Window
 
     private void UsersDG()
     {
-        var response = apiClientUser.Get<UsersModel>(new RestRequest($"/GetAllUsers"));
+        var response = apiClientUser.Get<UsersModel>(new RestRequest($"/User/GetAllUsers"));
         List<UserBodyModel> usersList = new List<UserBodyModel>();
         for (int i = 0; i < response.Body.Count; i++)
         {
@@ -49,14 +49,14 @@ public partial class AdminWindow : Window
             });
         }
         
-        var responseRoles = apiClientUser.Get<RoleModel>(new RestRequest($"/GetAllRoles"));
+        var responseRoles = apiClientUser.Get<RoleModel>(new RestRequest($"/User/GetAllRoles"));
         List<String> roleList = new List<String>();
         for (int i = 0; i < responseRoles.Body.Count; i++)
         {
             roleList.Add(responseRoles.Body[i].RoleName);
         }
 
-        var responseGroups = apiClientUser.Get<GroupModel>(new RestRequest($"/GetAllGroups"));
+        var responseGroups = apiClientUser.Get<GroupModel>(new RestRequest($"/User/GetAllGroups"));
         List<String> groupList = new List<String>();
         for (int i = 0; i < responseGroups.Body.Count; i++)
         {
@@ -129,7 +129,7 @@ public partial class AdminWindow : Window
     private void TasksDG()
     {
         // Получаем список сотрудников
-        var usersResponse = apiClientUser.Get<UsersModel>(new RestRequest("/GetAllUsers"));
+        var usersResponse = apiClientUser.Get<UsersModel>(new RestRequest("/User/GetAllUsers"));
         var usersList = usersResponse.Body;
 
         // Список для хранения всех задач
@@ -139,7 +139,7 @@ public partial class AdminWindow : Window
         foreach (var user in usersList)
         {
             var tasksResponse =
-                apiClientUser.Get<TaskModel>(new RestRequest($"/tasks/user/{user.UserId}"));
+                apiClientUser.Get<TaskModel>(new RestRequest($"/Task/tasks/user/{user.UserId}"));
             allTasks.AddRange(tasksResponse.Body);
         }
 
@@ -192,14 +192,14 @@ public partial class AdminWindow : Window
 
     private void Setting()
     {
-        var responseRoles = apiClientUser.Get<RoleModel>(new RestRequest($"/GetAllRoles"));
+        var responseRoles = apiClientUser.Get<RoleModel>(new RestRequest($"/User/GetAllRoles"));
         List<String> roleList = new List<String>();
         for (int i = 0; i < responseRoles.Body.Count; i++)
         {
             roleList.Add(responseRoles.Body[i].RoleName);
         }
 
-        var responseGroups = apiClientUser.Get<GroupModel>(new RestRequest($"/GetAllGroups"));
+        var responseGroups = apiClientUser.Get<GroupModel>(new RestRequest($"/User/GetAllGroups"));
         List<String> groupList = new List<String>();
         for (int i = 0; i < responseGroups.Body.Count; i++)
         {

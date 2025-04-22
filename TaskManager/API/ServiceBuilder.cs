@@ -4,7 +4,7 @@ namespace TaskManager.API;
 
 public class ServiceBuilder
 {
-    private static string rootUrl = "https://localhost:5001/api/Main";
+    private static string rootUrl = "https://localhost:5001/api";
     private static RestClient _restClient;
 
     public static RestClient GetInstance()

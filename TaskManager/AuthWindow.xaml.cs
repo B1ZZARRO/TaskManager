@@ -49,7 +49,7 @@ public partial class AuthWindow : Window
     {
         try
         {
-            var response = apiClientUser.Post<UserModel>(new RestRequest("/auth")
+            var response = apiClientUser.Post<UserModel>(new RestRequest("/User/auth")
                 .AddJsonBody(new
                 {
                     login = tb_login.Text,
