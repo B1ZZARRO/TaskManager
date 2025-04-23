@@ -70,6 +70,11 @@ public partial class AuthWindow : Window
                 Hide();
                 new AdminWindow(response.Body.UserId, response.Body.Name, this).Show();
             }
+            else if (response?.Message == "Ok" && response.Body.RoleId == 4)
+            {
+                Hide();
+                new StorageWindow(response.Body.UserId, response.Body.Name, this).Show();
+            }
             //else if (response?.Message == "Неверный логин или пароль") lbl_error.Content = "Неверный логин или пароль";
 
         }

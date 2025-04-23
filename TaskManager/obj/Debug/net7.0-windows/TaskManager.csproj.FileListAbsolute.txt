@@ -27,3 +27,5 @@ C:\Users\Dmitry\RiderProjects\TaskManager\TaskManager\obj\Debug\net7.0-windows\M
 C:\Users\Dmitry\RiderProjects\TaskManager\TaskManager\obj\Debug\net7.0-windows\AdminWindow.baml
 C:\Users\Dmitry\RiderProjects\TaskManager\TaskManager\obj\Debug\net7.0-windows\AuthWindow.baml
 C:\Users\Dmitry\RiderProjects\TaskManager\TaskManager\obj\Debug\net7.0-windows\MainWindow.baml
+C:\Users\Dmitry\RiderProjects\TaskManager\TaskManager\obj\Debug\net7.0-windows\StorageWindow.g.cs
+C:\Users\Dmitry\RiderProjects\TaskManager\TaskManager\obj\Debug\net7.0-windows\StorageWindow.baml
