@@ -21,7 +21,22 @@
                     <TextBlock>Движения на складе</TextBlock>
                 </TabItem.Header>
                 <TabItem.Content>
-                    <DataGrid x:Name="MovementDataGrid" AutoGenerateColumns="False"></DataGrid>
+                    <DataGrid x:Name="MovementDataGrid" AutoGenerateColumns="False" CanUserAddRows="False">
+                        <DataGrid.RowStyle>
+                            <Style TargetType="DataGridRow">
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding MovementType}" Value="приход">
+                                        <Setter Property="Background" Value="LightGreen"/>
+                                        <Setter Property="Foreground" Value="Black"/>
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding MovementType}" Value="outgoing">
+                                        <Setter Property="Background" Value="LightCoral"/>
+                                        <Setter Property="Foreground" Value="White"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </DataGrid.RowStyle>
+                    </DataGrid>
                 </TabItem.Content>
             </TabItem>
         </TabControl>

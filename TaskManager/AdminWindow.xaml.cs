@@ -20,6 +20,7 @@ public partial class AdminWindow : Window
         InitializeComponent();
         UsersDG();
         TasksDG();
+        Device();
         Setting();
     }
 
@@ -190,6 +191,72 @@ public partial class AdminWindow : Window
         TasksDataGrid.ItemsSource = data;
     }
 
+    private void Device()
+    {
+        var responseDevices = apiClientUser.Get<DeviceModel>(new RestRequest($"/Device/GetAllDevices"));
+        List<String> devicesList = new List<String>();
+        for (int i = 0; i < responseDevices.Body.Count; i++)
+        {
+            devicesList.Add(responseDevices.Body[i].DeviceName + " " + responseDevices.Body[i].DeviceModel);
+        }
+        cb_devices.ItemsSource = devicesList;
+        
+        var responseItems = apiClientUser.Get<ComponentsModel>(new RestRequest($"/Device/GetDeviceComponents/{5}"));
+        List<ComponentsBodyModel> itemsList = new List<ComponentsBodyModel>();
+        for (int i = 0; i < responseItems.Body.Count; i++)
+        {
+            itemsList.Add(new ComponentsBodyModel()
+            {
+                ComponentName = responseItems.Body[i].ComponentName,
+                AssemblyTimeMinutes = responseItems.Body[i].AssemblyTimeMinutes,
+                Items = responseItems.Body[i].Items
+            });
+        }
+        
+        var response = apiClientUser.Get<ComponentsModel>(new RestRequest($"/Device/GetDeviceComponents/{5}"));
+        List<ComponentsBodyModel> compList = new List<ComponentsBodyModel>();
+        for (int i = 0; i < response.Body.Count; i++)
+        {
+            compList.Add(new ComponentsBodyModel()
+            {
+                ComponentName = response.Body[i].ComponentName,
+                AssemblyTimeMinutes = response.Body[i].AssemblyTimeMinutes,
+                Items = response.Body[i].Items.ToList()
+            });
+        }
+        ComponentsDataGrid.ItemsSource = compList;
+
+        /*DataGridTextColumn itemNameColumn = new DataGridTextColumn
+        {
+            Header = "Название", Binding = new Binding("ItemName")
+        };
+        ComponentsDataGrid.Columns.Add(itemNameColumn);
+
+        DataGridTextColumn movementTypeColumn = new DataGridTextColumn
+        {
+            Header = "Тип", Binding = new Binding("MovementType")
+        };
+        ComponentsDataGrid.Columns.Add(movementTypeColumn);
+
+        DataGridTextColumn quantityColumn = new DataGridTextColumn
+        {
+            Header = "Количество", Binding = new Binding("Quantity")
+        };
+        ComponentsDataGrid.Columns.Add(quantityColumn);
+        
+        DataGridTextColumn movementDateColumn = new DataGridTextColumn
+        {
+            Header = "Дата", Binding = new Binding("MovementDate")
+        };
+        ComponentsDataGrid.Columns.Add(movementDateColumn);
+        
+        DataGridTextColumn relatedTaskTitleColumn = new DataGridTextColumn
+        {
+            Header = "Задача", Binding = new Binding("RelatedTaskTitle")
+        };
+        ComponentsDataGrid.Columns.Add(relatedTaskTitleColumn);*/
+    }
+
     private void Setting()
     {
         var responseRoles = apiClientUser.Get<RoleModel>(new RestRequest($"/User/GetAllRoles"));
@@ -208,5 +275,54 @@ public partial class AdminWindow : Window
 
         lb_roles.ItemsSource = roleList;
         lb_group.ItemsSource = groupList;
+    }
+
+    /*private async void LoadDeviceComponents(int deviceId)
+    {
+        var request = new RestRequest($"/Device/GetDeviceComponents?deviceId={deviceId}");
+        var response = await apiClientUser.GetAsync<ComponentsModel>(request);
+
+        if (response != null && response.Body != null)
+        {
+            ComponentsDataGrid.Columns.Clear();
+
+            // Настраиваем колонки DataGrid
+            ComponentsDataGrid.Columns.Add(new DataGridTextColumn
+            {
+                Header = "Название компонента",
+                Binding = new Binding("ComponentName"),
+                Width = new DataGridLength(2, DataGridLengthUnitType.Star)
+            });
+
+            ComponentsDataGrid.Columns.Add(new DataGridTextColumn
+            {
+                Header = "Время сборки (мин.)",
+                Binding = new Binding("AssemblyTimeMinutes"),
+                Width = 150
+            });
+
+            ComponentsDataGrid.Columns.Add(new DataGridTemplateColumn
+            {
+                Header = "Детали",
+                CellTemplate = (DataTemplate)FindResource("ComponentItemsTemplate"),
+                Width = 300
+            });
+
+            ComponentsDataGrid.ItemsSource = response.Body;
+        }
+    }*/
+    
+    private void Cb_devices_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+        /*if (cb_devices.SelectedItem is DeviceModel selectedDevice)
+        {
+            int selectedDeviceId = selectedDevice.DeviceId;
+
+            // Теперь у тебя есть выбранный ID, можно использовать дальше:
+            MessageBox.Show($"Выбран ID прибора: {selectedDeviceId}");
+
+            // Например, вызвать загрузку компонентов:
+            LoadDeviceComponents(selectedDeviceId);
+        }*/
     }
 }
